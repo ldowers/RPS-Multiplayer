@@ -1,0 +1,63 @@
+body {
+	background-color: lightblue;
+}
+
+.gamePanel {
+	position: relative;
+	min-height: 200px;
+	background-color: lightblue;
+	border-color: black;
+	text-align: center;
+}
+
+.playerName {
+	font-size: 20px;
+}
+
+.playerChoice {
+	margin-top: 14px;
+	min-height: 100px;
+}
+
+.choice {
+	font-size: 18px;
+	background: none;
+	border: none;
+}
+
+.answer, #resultPanel {
+	font-size: 48px;
+}
+
+.playerStats {
+	position: absolute;
+	bottom : 0 ;
+	right: 0 ;
+	left : 0 ;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 14px;
+}
+
+#gameTitle {
+	text-align: center;
+	font-family: "Times New Roman", Times, serif;
+	font-weight: 700;
+}
+
+#titleDisplayArea {
+	background-color: #3ca1c3;
+}
+
+#gameDisplayArea {
+	margin-top: 20px;
+}
+
+#chatPanel {
+	min-height: 100px;
+}
+
+#playerPanel1, #playerPanel2 {
+	border-color: black;
+	border-width: 1px;
+}
