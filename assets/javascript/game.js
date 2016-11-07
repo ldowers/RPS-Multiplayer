@@ -50,6 +50,8 @@ function newPlayer1 () {
 			losses: 0
 		}
 	});
+
+	playersRef.child("1").onDisconnect().remove();
 };
 
 function newPlayer2 () {
@@ -70,6 +72,8 @@ function newPlayer2 () {
 			losses: 0
 		}
 	});
+
+	playersRef.child("2").onDisconnect().remove();
 };
 
 function displayPlayer() {
@@ -96,7 +100,7 @@ function displayChoices() {
 	}
 };
 
-function displayPlayerChoice () {
+function displayAnswer () {
 	var answer = "";
 
 	if (currentNumber == 1) {
@@ -199,7 +203,7 @@ function changeBorder() {
 	}
 };
 
-function resetGame() {
+function resetDisplay() {
 	$("#playerChoice1").empty();
 	$("#playerChoice2").empty();
 	$("#resultPanel").empty();
@@ -211,19 +215,20 @@ function resetGame() {
 $("#startButton").on("click", function() {
 	var name = $('#nameInput').val().trim();
 
-	if (numPlayers == 1 && player1 == "") {
+	if (player1 == "") {
 		currentPlayer = name;
 		currentNumber = 1;
 
 		newPlayer1();
 		displayPlayer();
 	}
-	else if (numPlayers >= 2 && player2 == "") {
+	else if (player2 == "") {
 		currentPlayer = name;
 		currentNumber = 2;
 
 		newPlayer2();
 		displayPlayer();
+
 		turnRef.set(1);
 	}
 });
@@ -245,7 +250,7 @@ $(document).on("click", ".choice", function() {
 			}
 		});
 
-		displayPlayerChoice();
+		displayAnswer();
 		turnRef.set(2);
 	}
 	
@@ -261,7 +266,7 @@ $(document).on("click", ".choice", function() {
 			}
 		});
 
-		displayPlayerChoice();
+		displayAnswer();
 		turnRef.set(3);
 	}
 });
@@ -290,7 +295,7 @@ connectedRef.on("value", function(snapshot) {
 	if (snapshot.val()) {
 		var con = connectionsRef.push(true);
 		con.onDisconnect().remove();
-	};
+	}
 });
 
 // When first loaded or when player connection list changes...
@@ -313,7 +318,7 @@ playersRef.on("value", function(snapshot) {
 		if (snapshot.child("1").child("choice").exists()) {
 			choice1 = snapshot.child("1").val().choice;
 		}
-	};
+	}
 
 	if (snapshot.child("2").exists()) {
 		player2 = snapshot.child("2").val().name;
@@ -334,7 +339,8 @@ turnRef.on("value", function(snapshot) {
 		turn = snapshot.val();
 
 		if (turn == 1) {
-			resetGame();
+			resetDisplay();
+			turnRef.onDisconnect().remove();
 
 			if (currentNumber == 1) {
 				$("#message-1").html("It's Your Turn!");
@@ -370,7 +376,27 @@ turnRef.on("value", function(snapshot) {
 			}
 			
 		}
-	};
+	}
+	else {
+		resetDisplay();
+
+		// Reset borders
+		$("#playerPanel1").css({"border-color": "black", "border-width": "1px"});
+		$("#playerPanel2").css({"border-color": "black", "border-width": "1px"});
+		
+		if (currentNumber == 1) {
+			$("#message-1").empty();
+			$("#playerName2").html("Waiting for Player 2");
+			$("#playerStats2").empty();
+		}
+
+		if (currentNumber == 2) {
+			$("#message-2").empty();
+			$("#playerName1").html("Waiting for Player 1");
+			$("#playerStats1").empty();
+
+		}
+	}
 });
 
 // When first loaded or when chat message added...
