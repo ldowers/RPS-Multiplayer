@@ -10,6 +10,13 @@ var config = {
 };
 firebase.initializeApp(config);
 
+<<<<<<< HEAD
+// Variables
+var database = firebase.database();
+
+
+// When first loaded or when players list changes
+=======
 // Variables ===================================================================
 var database = firebase.database();
 
@@ -446,3 +453,4 @@ chatRef.on("child_added", function(childSnapshot) {
 		$("#chatPanel").append("<p>" + childSnapshot.val() + "</p>");
 	};
 });
+>>>>>>> e98a372602c47d7a9279245559c960f3128e36e9

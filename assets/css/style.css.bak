@@ -3,13 +3,22 @@ body {
 }
 
 .gamePanel {
+<<<<<<< HEAD
+=======
 	position: relative;
+>>>>>>> e98a372602c47d7a9279245559c960f3128e36e9
 	min-height: 200px;
 	background-color: lightblue;
 	border-color: black;
 	text-align: center;
 }
 
+<<<<<<< HEAD
+#chatPanel {
+	min-height: 100px;
+}
+
+=======
 .playerName {
 	font-size: 20px;
 }
@@ -39,6 +48,7 @@ body {
 	font-size: 14px;
 }
 
+>>>>>>> e98a372602c47d7a9279245559c960f3128e36e9
 #gameTitle {
 	text-align: center;
 	font-family: "Times New Roman", Times, serif;
@@ -53,6 +63,19 @@ body {
 	margin-top: 20px;
 }
 
+<<<<<<< HEAD
+#playerPanel1, #playerPanel2 {
+	font-size: 20px;
+}
+
+#playerChoices1, #playerChoices2 {
+	margin-top: 20px;
+	min-height: 100px;
+}
+
+#playerResults1, #playerResults2 {
+	font-size: 14px;
+=======
 #chatPanel {
 	min-height: 100px;
 }
@@ -60,4 +83,5 @@ body {
 #playerPanel1, #playerPanel2 {
 	border-color: black;
 	border-width: 1px;
+>>>>>>> e98a372602c47d7a9279245559c960f3128e36e9
 }

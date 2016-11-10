@@ -38,7 +38,11 @@
 						<div class="form-group">
 							<input type="text" class="form-control" id="nameInput" placeholder="Name">
 						</div>
+<<<<<<< HEAD
+						<button type="button" class="btn btn-default" id="startButton">Start</button>
+=======
 						<button type="button" class="btn btn-primary" id="startButton">Start</button>
+>>>>>>> e98a372602c47d7a9279245559c960f3128e36e9
 					</form>
 				</div>
 			</div>
@@ -49,12 +53,19 @@
 
 			<!-- Player 1 -->
 			<div class="col-sm-4">
+<<<<<<< HEAD
+				<div class="panel panel-default gamePanel">
+					<div class="panel-body">
+						<div id="playerPanel1">Waiting for Player 1</div>
+					</div>
+=======
 				<div class="panel panel-default gamePanel" id="playerPanel1">
 					<div class="panel-body">
 						<div class="playerName" id="playerName1">Waiting for Player 1</div>
 						<div class ="playerChoice" id="playerChoice1"></div>
 					</div>
 					<div class="playerStats" id="playerStats1"></div>
+>>>>>>> e98a372602c47d7a9279245559c960f3128e36e9
 				</div>
 			</div>
 
@@ -62,19 +73,30 @@
 			<div class="col-sm-4">
 				<div class="panel panel-default gamePanel">
 					<div class="panel-body">
+<<<<<<< HEAD
+						<div id="gamePanel"></div>
+=======
 						<div id="resultPanel"></div>
+>>>>>>> e98a372602c47d7a9279245559c960f3128e36e9
 					</div>
 				</div>
 			</div>
 
 			<!-- Player 2 -->
 			<div class="col-sm-4">
+<<<<<<< HEAD
+				<div class="panel panel-default gamePanel">
+					<div class="panel-body">
+						<div id="playerPanel2">Waiting for Player 2</div>
+					</div>
+=======
 				<div class="panel panel-default gamePanel" id="playerPanel2">
 					<div class="panel-body">
 						<div class="playerName" id="playerName2">Waiting for Player 2</div>
 						<div class="playerChoice" id="playerChoice2"></div>
 					</div>
 					<div class="playerStats" id="playerStats2"></div>
+>>>>>>> e98a372602c47d7a9279245559c960f3128e36e9
 				</div>
 			</div>
 		</div>
@@ -98,6 +120,10 @@
 	</div>
 
 	<!-- Game JS -->
+<<<<<<< HEAD
+	<!-- <script src="assets/javascript/game.js"></script> -->
+=======
 	<script src="assets/javascript/game.js"></script>
+>>>>>>> e98a372602c47d7a9279245559c960f3128e36e9
 </body>
 </html>
