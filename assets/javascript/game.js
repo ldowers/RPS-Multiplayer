@@ -307,6 +307,8 @@ $("#sendButton").on("click", function() {
 	if (currentPlayer != "") {
 		chatRef.push(currentPlayer + ": " + $("#chatText").val());	
 		$("#chatText").val("");
+
+		chatRef.onDisconnect().remove();
 	}
 
 	return false;
