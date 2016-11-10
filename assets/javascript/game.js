@@ -43,13 +43,28 @@ function newPlayer1 () {
 	numLosses1 = 0;
 	choice1 = "";
 
-	playersRef.set({
-		1: {
-			name: currentPlayer,
-			wins: 0,
-			losses: 0
-		}
-	});
+	if (player2 != "") {
+		playersRef.set({
+			1: {
+				name: currentPlayer,
+				wins: 0,
+				losses: 0
+			},
+			2: {
+				name: player2,
+				wins: numWins2,
+				losses: numLosses2
+			}
+		});
+	} else {
+		playersRef.set({
+			1: {
+				name: currentPlayer,
+				wins: 0,
+				losses: 0
+			}
+		});
+	}
 
 	playersRef.child("1").onDisconnect().remove();
 };
@@ -60,18 +75,28 @@ function newPlayer2 () {
 	numLosses2 = 0;
 	choice2 = "";
 
-	playersRef.set({
-		1: {
-			name: player1,
-			wins: numWins1,
-			losses: numLosses1
-		},
-		2: {
-			name: currentPlayer,
-			wins: 0,
-			losses: 0
-		}
-	});
+	if (player1 != "") {
+		playersRef.set({
+			1: {
+				name: player1,
+				wins: numWins1,
+				losses: numLosses1
+			},
+			2: {
+				name: currentPlayer,
+				wins: 0,
+				losses: 0
+			}
+		});
+	} else {
+		playersRef.set({
+			2: {
+				name: currentPlayer,
+				wins: 0,
+				losses: 0
+			}
+		});
+	}
 
 	playersRef.child("2").onDisconnect().remove();
 };
@@ -228,9 +253,13 @@ $("#startButton").on("click", function() {
 
 		newPlayer2();
 		displayPlayer();
+	}
 
+	if (player1 != "" && player2 != "") {
 		turnRef.set(1);
 	}
+
+	return false;
 });
 
 // Rock, Paper, or Scissors clicked
@@ -271,8 +300,6 @@ $(document).on("click", ".choice", function() {
 	}
 });
 
-// Countdown timer for result
-
 // Send button clicked for chat message
 $("#sendButton").on("click", function() {
 
@@ -281,12 +308,14 @@ $("#sendButton").on("click", function() {
 		chatRef.push(currentPlayer + ": " + $("#chatText").val());	
 		$("#chatText").val("");
 	}
+
+	return false;
 });
 
-// Player disconnected
-
-// New player connected after disconnect
-
+// Prevent enter key in form input
+$(document).on("keypress", "form", function(event) { 
+    return event.keyCode != 13;
+});
 
 // Database Reference Handlers ================================================
 
@@ -333,6 +362,17 @@ playersRef.on("value", function(snapshot) {
 	}
 });
 
+// When player disconnects...
+playersRef.once("child_removed", function(snapshot) {
+	console.log("Player disconnected");
+
+	// If player disconnects, delete turn & push chat message
+	if (currentPlayer != "") {
+		chatRef.push(snapshot.val().name + " has disconnected");
+		turnRef.remove();
+	}
+});
+
 // When first loaded or when turn number changes...
 turnRef.on("value", function(snapshot) {
 	if (snapshot.val()) {
@@ -340,7 +380,6 @@ turnRef.on("value", function(snapshot) {
 
 		if (turn == 1) {
 			resetDisplay();
-			turnRef.onDisconnect().remove();
 
 			if (currentNumber == 1) {
 				$("#message-1").html("It's Your Turn!");
