@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<title>Rock Paper Scissors Online Multiplayer</title>
+
+	<!-- Reset CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+	<!-- Bootstrap CSS-->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- My CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+	<!-- jQuery JS-->
+	<script	src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+
+	<!-- Firebase JS-->
+	<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+</head>
+<body>
+	<div class="container">
+
+		<!-- Heading -->
+		<div class="well" id="titleDisplayArea">
+			<h1 id="gameTitle">Rock Paper Scissors</h1>
+		</div>
+
+		<!-- Name Input -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="text-center" id="nameDisplay">
+					<form class="form-inline">
+						<div class="form-group">
+							<input type="text" class="form-control" id="nameInput" placeholder="Name">
+						</div>
+						<button type="button" class="btn btn-default" id="startButton">Start</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Game Play Area -->
+		<div class="row" id="gameDisplayArea">
+
+			<!-- Player 1 -->
+			<div class="col-sm-4">
+				<div class="panel panel-default gamePanel">
+					<div class="panel-body">
+						<div id="playerPanel1">Waiting for Player 1</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Result -->
+			<div class="col-sm-4">
+				<div class="panel panel-default gamePanel">
+					<div class="panel-body">
+						<div id="gamePanel"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Player 2 -->
+			<div class="col-sm-4">
+				<div class="panel panel-default gamePanel">
+					<div class="panel-body">
+						<div id="playerPanel2">Waiting for Player 2</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Chat Box -->
+		<div class="row" id="chatDisplayArea">
+			<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div id="chatPanel"></div>
+					</div>
+				</div>
+				<form class="form-inline">
+					<div class="form-group">
+						<input type="text" size="90" class="form-control" id="chatText">
+					</div>
+					<button type="button" class="btn btn-default" id="sendButton">Send</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Game JS -->
+	<!-- <script src="assets/javascript/game.js"></script> -->
+</body>
+</html>

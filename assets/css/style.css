@@ -1,0 +1,41 @@
+body {
+	background-color: lightblue;
+}
+
+.gamePanel {
+	min-height: 200px;
+	background-color: lightblue;
+	border-color: black;
+	text-align: center;
+}
+
+#chatPanel {
+	min-height: 100px;
+}
+
+#gameTitle {
+	text-align: center;
+	font-family: "Times New Roman", Times, serif;
+	font-weight: 700;
+}
+
+#titleDisplayArea {
+	background-color: #3ca1c3;
+}
+
+#gameDisplayArea {
+	margin-top: 20px;
+}
+
+#playerPanel1, #playerPanel2 {
+	font-size: 20px;
+}
+
+#playerChoices1, #playerChoices2 {
+	margin-top: 20px;
+	min-height: 100px;
+}
+
+#playerResults1, #playerResults2 {
+	font-size: 14px;
+}
